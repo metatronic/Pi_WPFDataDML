@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPFDataDML.ContinentCountryState"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDataDML"
+        mc:Ignorable="d"
+        Title="ContinentCountryState" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Window.Resources>
+    <Grid Name="MainGrid" Loaded="MainGrid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox Name="ContinentCombo" DisplayMemberPath="ContinentName" SelectedValuePath="ContinentId" SelectionChanged="ContinentCombo_SelectionChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Name="CountryPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox Name="CountryCombo" DisplayMemberPath="CountryName" SelectedValuePath="CountryId" SelectionChanged="CountryCombo_SelectionChanged"/>
+            <Label Content="{Binding Path=Capital}"/>
+            <Image Source="{Binding Path=Flag}" Stretch="Fill" Width="100" Height="50"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Name="StatePanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox Name="StateCombo" DisplayMemberPath="StateName" SelectedValuePath="StateId" SelectionChanged="StateCombo_SelectionChanged"/>
+            <Label Content="{Binding Path=Capital}"/>
+        </StackPanel>
+    </Grid>
+</Window>
